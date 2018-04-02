@@ -1,5 +1,6 @@
-##### Preparation and Framing Document
+## Preparation and Framing Document
 ### Background and Context
+We are making an interactive enducational animation about the environment for fourth graders.
 ### Key Questions
-### Agenda forTechnical Review Session
+### Agenda for Technical Review Session
 ### Feedback Form

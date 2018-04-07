@@ -3,11 +3,15 @@ Authors: Emily Nasiff, Andrew Schnurr
 
 Description: Class that creates text boxs that blit onto the backgroud after a spacebar click from the user.
 """
+import pygame
 
-class textbox:
-     """ Imports an image of a textbox full of facts for each location and places that onto the screen """
+basicfont = pygame.font,SysFont(None, 48)
+
+
+
+class ConvoBubble:
     def __init__(self,color=(200,200,200)):
-        """ Creates a surface to attach the image to """
+
         self.left = 500
         self.top = 400
         self.width = 200
@@ -29,8 +33,25 @@ class textbox:
         view.screen.blit(info,self.card)
         pygame.display.update()
 
+    def text(self,image):
+        self.card = pygame.draw.rect(self.surf,self.color,self.rect,self.rect.width)
+        view.screen.blit(self.surf, self.card)
+        pygame.display.update()
+
+        info = pygame.image.load(image)
+        view.screen.blit(info,self.card)
+        pygame.display.update()
+
+    def name_draw(self,string):
+        self.card = pygame.draw.rect(self.surf,self.color,self.rect,self.rect.width)
+        view.screen.blit(self.surf, self.card)
+        pygame.display.update()
+        name = basicfont.render(string, True, (255, 0, 0), (255,255,255))
+        view.screen.blit(name,self.card)
+        pygame.display.update()
+
 class real_picture:
-     """ Imports a real life image of the location to be displayed across from the textbox """
+
     def __init__(self,color=(200,200,200)):
         """ Creates a surface to attach the image to """
         self.left = 20
@@ -50,6 +71,9 @@ class real_picture:
         view.screen.blit(self.surf, self.card)
         pygame.display.update()
 
-        info = pygame.image.load(image)
-        view.screen.blit(info,self.card)
+        picture = pygame.image.load(image)
+        view.screen.blit(picture,self.card)
         pygame.display.update()
+
+cb = ConvoBubble()
+cb.draw('ConvoBubble.jpg')

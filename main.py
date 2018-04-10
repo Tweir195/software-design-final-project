@@ -17,27 +17,14 @@ class background(object):
 
 
 class ConvoBubble:
-    def __init__(self,color=(200,200,200)):
+    def __init__(self,image, right_l, left_l):
+        self.image = pygame.image.load(image)
+        self.rightl = right_l
+        self.leftl = left_l
+    def draw(self):
+        """ Draws a base convobubble so text can be blited on."""
 
-        self.left = 500
-        self.top = 400
-        self.width = 200
-        self.height = 280
-        self.surf = pygame.Surface((self.width,self.height))
-        self.color = color
-        self.surf.fill(self.color)
-        self.rect = pygame.Rect(self.left,self.top,self.width,self.height)
-
-    def draw(self,image):
-        """ Draws the specified image to the Infocard surface
-        image: must be a string """
-
-        """"self.card = pygame.draw.rect(self.surf,self.color,self.rect,self.rect.width)
-        view.screen.blit(self.surf, self.card)
-        pygame.display.update()"""
-
-        c_b = pygame.image.load(image)
-        view.screen.blit(c_b,(-400,-200))
+        view.screen.blit(self.image,(self.rightl,self.leftl))
         pygame.display.update()
 
     def text(self,image):
@@ -59,33 +46,21 @@ class ConvoBubble:
 
 class real_picture:
 
-    def __init__(self,color=(200,200,200)):
-        """ Creates a surface to attach the image to """
-        self.left = 20
-        self.top = 500
-        self.width = 400
-        self.height = 400
-        self.surf = pygame.Surface((self.width,self.height))
-        self.color = color
-        self.surf.fill(self.color)
-        self.rect = pygame.Rect(self.left,self.top,self.width,self.height)
 
-    def draw(self,image):
-        """ Draws the specified image to the Infocard surface
-        image: must be a string """
-
-        self.card = pygame.draw.rect(self.surf,self.color,self.rect,self.rect.width)
-        view.screen.blit(self.surf, self.card)
-        pygame.display.update()
-
-        picture = pygame.image.load(image)
-        view.screen.blit(picture,self.card)
+    def __init__(self,image, right_l, left_l):
+        self.image = pygame.image.load(image)
+        self.rightl = right_l
+        self.leftl = left_l
+    def draw(self):
+        """ intserts real image onto screen"""
+        view.screen.blit(self.image,(self.rightl,self.leftl))
         pygame.display.update()
 
 if __name__ == "__main__":
     pygame.init()
     view = background()
-    cb = ConvoBubble()
+    cb = ConvoBubble('convobubble.PNG', -400, -200)
+    panama = real_picture('panama.jpg', 300, 100)
 
 
 
@@ -96,10 +71,12 @@ if __name__ == "__main__":
 
 
 
+    view.draw("Attachment-1.png")
+    cb.draw()
+    panama.draw()
+
 
     while running:
-        view.draw("Attachment-1.png")
-        cb.draw('convobubble.PNG')
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False

@@ -5,10 +5,15 @@ import pygame
 
 
 class background(object):
+    """This class takes a size, creates a pygame window, and
+    puts an image on the screen
+    """
     def __init__(self, size=(1280,960)):
         self.screen = pygame.display.set_mode(size)
         self.size = size
     def draw(self, image):
+        """Draws the background on the screen
+        """
         self.screen.fill(pygame.Color(0,0,0))
         load = pygame.image.load(image)
         back_ground = pygame.transform.scale(load, self.size)
@@ -17,17 +22,21 @@ class background(object):
 
 
 class ConvoBubble:
+    """This class takes a location, and forms the converstation bubble
+    """
     def __init__(self,image, right_l, left_l):
         self.image = pygame.image.load(image)
         self.rightl = right_l
         self.leftl = left_l
     def draw(self):
-        """ Draws a base convobubble so text can be blited on."""
-
+        """ Draws a base convobubble so text can be blited on.
+        """
         view.screen.blit(self.image,(self.rightl,self.leftl))
         pygame.display.update()
 
     def text(self,image):
+        """Adds text to the bubble
+        """
         self.card = pygame.draw.rect(self.surf,self.color,self.rect,self.rect.width)
         view.screen.blit(self.surf, self.card)
         pygame.display.update()
@@ -45,8 +54,8 @@ class ConvoBubble:
         #pygame.display.update()
 
 class real_picture:
-
-
+    """Adds a real image on the screen with the initial location
+    """
     def __init__(self,image, right_l, left_l):
         self.image = pygame.image.load(image)
         self.rightl = right_l
@@ -58,8 +67,8 @@ class real_picture:
 
 
 class sprite:
-
-
+    """Creates an image that can be moved across the screen
+    """
     def __init__(self,image, x, y):
         self.image = pygame.image.load(image)
         self.x = x
@@ -70,6 +79,8 @@ class sprite:
         view.screen.blit(self.image,(self.x,self.y))
         pygame.display.update()
     def animate(self, offx, offy, bob=False):
+        """Moves image across the screen, with offx and offy as the distance
+        in each flip"""
         if bob == False:
             self.x += offx
             self.y += offy
@@ -90,14 +101,12 @@ class GoToButton(object):
     """ Places image at the specified location to represent a click zone
     that takes you to new location"
 
-    Location: string with name of Location it takes you to REMOVED
     left: leftmost coordinate
     top: topmost coordinate
     width: distance from left
     height: distance from top
     """
     def __init__(self, left, top, width = 100, height = 50):
-        # self.location = location
         self.left = left
         self.top = top
         self.width = width

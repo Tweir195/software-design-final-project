@@ -146,12 +146,15 @@ if __name__ == "__main__":
     clock = pygame.time.Clock()
     FPS = 15
 
+
     view.draw("images/Attachment-1.png")
     cb.draw()
     panama.draw()
 
 
     while running:
+        mouse = pygame.mouse.get_pos()
+        mouseflag = pygame.mouse.get_pressed()
         clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -159,7 +162,9 @@ if __name__ == "__main__":
         cat.animate(6,3,bob=True)
         view.screen.fill(pygame.Color(60,0,245))
         cat.draw()
+        button.check_mouse(mouse)
         button.draw()
+        button.mousedown(mouseflag)
         pygame.time.wait(100)
 
 

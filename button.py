@@ -19,17 +19,30 @@ class GoToButton(object):
         self.height = height
         self.surf = pygame.Surface((self.width,self.height))
         self.color = 255,0,0
-        self.surf.fill(self.color)
+        self.color2 = 0,0,0
         self.rect = pygame.Rect(self.left,self.top,self.width,self.height)
         self.rect.width = 0
+        self.onbutton = False
 
-    def draw(self):
+    def draw(self, color=None):
         """ puts 'button' on screen"""
-        button = pygame.draw.rect(self.surf,self.color,self.rect)
+        if self.onbutton == False:
+            color = self.color
+        else:
+            color = self.color2
+        self.surf.fill(color)
+        pygame.draw.rect(self.surf,color,self.rect)
         view.screen.blit(self.surf,(self.left,self.top))
         pygame.display.update()
 
-    def check_mouse(self, mouse, color):
+    def check_mouse(self, mousepos):
         """checks to see if the cursor is within the button"""
-        if self.left < mouse < self.left+self.width and self.top < mouse < self.top+self.height:
-            self.color = color
+        if self.left < mousepos[0] < self.left+self.width and self.top < mousepos[1] < self.top+self.height:
+            self.onbutton = True
+        else:
+            self.onbutton = False
+    def mousedown(self,mouseflag):
+        """checks to see if the user has clicked on the button"""
+        if self.onbutton == True and mouseflag[0] == 1:
+            view.screen.fill(pygame.Color(200,200,200))
+            print('MOUSEDOWN')

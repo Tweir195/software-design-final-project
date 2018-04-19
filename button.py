@@ -41,8 +41,10 @@ class GoToButton(object):
             self.onbutton = True
         else:
             self.onbutton = False
-    def mousedown(self,mouseflag):
+    def mousedown(self,mouseflag,index,max):
         """checks to see if the user has clicked on the button"""
         if self.onbutton == True and mouseflag[0] == 1:
             view.screen.fill(pygame.Color(200,200,200))
-            print('MOUSEDOWN')
+            if index<max:
+                index+=1
+        return index

@@ -13,7 +13,7 @@ if __name__ == "__main__":
     view = background()
     cb = ConvoBubble('images/convobubble.PNG', -400, -200)
     panama = real_picture('images/panama.jpg', 300, 100)
-    boat = sprite('images/Quincy.PNG',75, 300,width=450,height=550,resize=True)
+    boat = sprite('images/Quincy.PNG',250, 450,200,400,width=450,height=550,resize=True)
     button = GoToButton(1100,780)
     images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG']
 
@@ -25,6 +25,7 @@ if __name__ == "__main__":
     view.draw(images[index])
     # cb.draw()
     # panama.draw()
+    boat.draw()
     moveflag = False
 
     while running: # main program loop
@@ -35,9 +36,11 @@ if __name__ == "__main__":
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-            boat.animate(0,3,moveflag,bob=True)
-            view.draw(images[index])
-            boat.draw()
+            # boat.clear()
+            boat.animate_surf(0,3,moveflag,bob=True)
+            # view.draw(images[index])
+            boat.move()
+            # boat.draw()
             button.check_mouse(mouse)
             button.draw()
             index = button.mousedown(mouseflag,index,len(images)-1)

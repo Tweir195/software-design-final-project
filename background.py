@@ -16,3 +16,6 @@ class background(object):
         back_ground = pygame.transform.scale(load, self.size)
         self.screen.blit(back_ground, [0,0])
         pygame.display.update()
+    def update(self,flag):
+        if flag == True:
+            self.draw()

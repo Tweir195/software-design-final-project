@@ -29,6 +29,7 @@ if __name__ == "__main__":
     cb = ConvoBubble('images/convobubble.PNG', -400, -200)
     button = GoToButton(1100,780)
     images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG']
+    testpic = real_picture('images/cat-grumpy-icon.png',20,70,width=600,height=300,resize=True)
 
     running = True
     clock = pygame.time.Clock()
@@ -64,6 +65,7 @@ if __name__ == "__main__":
         boat = sprite('images/Quincy.PNG',250, 420,200,430,images[index],width=450,height=550,resize=True)
         moveflag = False
         view.draw(images[index])
+        testpic.update(True)
         while index == 1 and running:
             mouse = pygame.mouse.get_pos()
             mouseflag = pygame.mouse.get_pressed()

@@ -19,3 +19,6 @@ class real_picture:
         """ intserts real image onto screen"""
         view.screen.blit(self.image, (self.left, self.top))
         pygame.display.update()
+    def update(self,flag):
+        if flag == True:
+            self.draw()

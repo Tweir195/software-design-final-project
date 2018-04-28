@@ -26,7 +26,7 @@ class ConvoBubble:
         # text_rect.centery = 450
         # text_rect.width = 2
         # view.screen.blit(text,text_rect)
-        pygame.display.update()
+        #pygame.display.update()
     def text(self,image):
         """Adds text to the bubble
         """
@@ -55,9 +55,19 @@ if __name__ == "__main__":
     ,'images/Australia/Australia_9.png','images/Australia/Australia_10.png','images/Australia/Australia_11.png','images/Australia/Australia_12.png']
     images = ['images/Australia/AustraliaBG.PNG']
     index = 0
-    keys=pygame.key.get_pressed()
-    if keys[pygame.K_BACKSPACE] == True:
-        print('taco')
+    i = -1
+    while 1:
+        view.draw(images[index])
+        i = i + 1
+        for event in pygame.event.get():
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    cb = ConvoBubble(text_bubble[i],100,100)
+                    cb.draw()
+
+
+
     #view.draw(images[index])
     # for i in range(len(text_bubble)):
     #     cb = ConvoBubble(text_bubble[i], 100, 100)
@@ -67,9 +77,3 @@ if __name__ == "__main__":
     #cb.text('images/WelcomeBG.PNG')
     #cb.text(images[1])
 #        panama.draw()
-
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type ==pygame.QUIT:
-                running = False

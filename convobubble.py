@@ -16,6 +16,7 @@ class ConvoBubble:
         """ Takes a list of convobubble and cycles through them when the space bar is pressed.
         """
 
+
         view.screen.blit(self.image,(self.rightl,self.leftl))
 
         pygame.display.update()
@@ -49,24 +50,29 @@ class ConvoBubble:
 
 if __name__ == "__main__":
     pygame.init()
+    clock = pygame.time.Clock()
     #'images/convobubble.PNG'
     text_bubble=['images/Australia/Australia_1.png','images/Australia/Australia_2.png','images/Australia/Australia_3.png','images/Australia/Australia_4.png',
     'images/Australia/Australia_5.png','images/Australia/Australia_6.png','images/Australia/Australia_7.png','images/Australia/Australia_8.png'
     ,'images/Australia/Australia_9.png','images/Australia/Australia_10.png','images/Australia/Australia_11.png','images/Australia/Australia_12.png']
     images = ['images/Australia/AustraliaBG.PNG']
     index = 0
-    i = -1
-    while 1:
-        view.draw(images[index])
-        i = i + 1
+    i = 0
+    running = True
+    view.draw(images[index])
+    while running:
+
+
+        cb = ConvoBubble(text_bubble[i],600,0)
+
+        cb.draw()
         for event in pygame.event.get():
-            
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    cb = ConvoBubble(text_bubble[i],100,100)
-                    cb.draw()
+                    i = i + 1
 
 
+        clock.tick(40)
 
     #view.draw(images[index])
     # for i in range(len(text_bubble)):

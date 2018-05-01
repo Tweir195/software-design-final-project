@@ -7,20 +7,25 @@ import time
 class ConvoBubble:
     """This class takes a location, and forms the converstation bubble
     """
-    def __init__(self,image, left, top,width=None,height=None,resize=False):
-        image = pygame.image.load(image)
-        if resize is True:
-            self.image = pygame.transform.scale(image, (width, height))
-        else:
-            self.image = image
+    def __init__(self, left, top,width=None,height=None,resize=False):
         self.left = left
         self.top = top
+        self.spaceflag = False
+        self.oldindex = 0
+        self.redraw = False
+        self.width = width
+        self.height = height
+        self.resize = resize
 
-    def draw(self):
+    def draw(self,image):
         """ Takes a list of convobubble and cycles through them when the space bar is pressed.
         """
+        image = pygame.image.load(image)
+        if self.resize is True:
+            self.image = pygame.transform.scale(image, (self.width, self.height))
+        else:
+            self.image = image
         view.screen.blit(self.image,(self.left,self.top))
-
         pygame.display.update()
         # font = pygame.font.SysFont('Sans',35)
         # text=font.render('Learning Learning Learning',0,(0,0,0))
@@ -30,9 +35,13 @@ class ConvoBubble:
         # text_rect.width = 2
         # view.screen.blit(text,text_rect)
         #pygame.display.update()
-    def update(self,flag):
+
+    def update(self,flag,image):
         if flag == True:
             self.draw()
+            flag = False
+        return flag
+
     def text(self,image):
         """Adds text to the bubble
         """
@@ -44,16 +53,24 @@ class ConvoBubble:
         view.screen.blit(info,(0,0))
         pygame.display.update()
 
-    def next_text(self,i):
-        flag = False
+    def spacedown(self,index,max):
+        """Checks if the space bar has been pressed"""
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    i = i + 1
-                    flag = True
-        return i,flag
+                    self.spaceflag = True
+        if self.spaceflag == True and index<max:
+            index += 1
+            if index == max:
+                index = 0
+            self.oldindex = index
+            print('SPACE',index)
+            self.spaceflag = False
+        return self.oldindex
+
+    def check_redraw(self,index):
+        if self.oldindex != index:
+            self.redraw = True
 
     #def name_draw(self,string):
         #self.card = pygame.draw.rect(self.surf,self.color,self.rect,self.rect.width)

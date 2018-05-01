@@ -35,6 +35,10 @@ class GoToButton(object):
         view.screen.blit(self.surf,(self.left,self.top))
         pygame.display.update()
 
+    def update(self,flag):
+        if flag == True:
+            self.draw()
+
     def check_mouse(self, mousepos):
         """checks to see if the cursor is within the button"""
         if self.left < mousepos[0] < self.left+self.width and self.top < mousepos[1] < self.top+self.height:

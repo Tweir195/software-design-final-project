@@ -10,21 +10,24 @@ import pygame
 def animate_between_pages(moveflag,running):
     """Makes the boat float from one page to the next"""
     rect = pygame.Rect((0,0),(1280,700))
-    view.draw(images[index-1])
+    view.draw(images[backindex-1])
     for i in range(50):
-        while running == True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-            boat.animate(15,4,moveflag,True,bob=True)
-            boat.draw()
-            pygame.time.wait(100)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        boat.animate(15,4,moveflag,True,bob=True)
+        boat.draw()
+        pygame.time.wait(100)
 
 
 if __name__ == "__main__":
     pygame.init()
     view = background()
-    cb = ConvoBubble('images/convobubble.PNG', -400, -200)
+    cb = ConvoBubble('images/convobubble.PNG', -400, -200,width=300,height=300,resize=True)
+    text = ['images/Australia/Australia_1.png','images/Australia/Australia_2.png','images/Australia/Australia_3.png','images/Australia/Australia_4.png',
+    'images/Australia/Australia_5.png','images/Australia/Australia_6.png','images/Australia/Australia_7.png','images/Australia/Australia_8.png'
+    ,'images/Australia/Australia_9.png','images/Australia/Australia_10.png','images/Australia/Australia_11.png','images/Australia/Australia_12.png']
+    images = ['images/Australia/AustraliaBG.PNG']
     button = GoToButton(1100,780)
     images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG']
     testpic = real_picture('images/cat-grumpy-icon.png',20,70,width=600,height=300,resize=True)
@@ -33,17 +36,19 @@ if __name__ == "__main__":
     clock = pygame.time.Clock()
     FPS = 15
 
-    index = 0
-    view.draw(images[index])
+    cbindex = 0
+    cbflag = False
+    backindex = 0
+    view.draw(images[backindex])
     moveflag = False
-    boat = sprite('images/Quincy.PNG',250, 420,200,430,images[index],width=450,height=550,resize=True)
+    boat = sprite('images/Quincy.PNG',250, 420,200,430,images[backindex],width=450,height=550,resize=True)
     boat.draw()
 
     while running: # main program loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-        while index == 0 and running:
+        while backindex == 0 and running:
             mouse = pygame.mouse.get_pos()
             mouseflag = pygame.mouse.get_pressed()
             clock.tick(FPS)
@@ -54,17 +59,18 @@ if __name__ == "__main__":
             boat.update(changepos)
             button.check_mouse(mouse)
             button.draw()
-            index = button.mousedown(mouseflag,index,len(images)-1)
+            backindex = button.mousedown(mouseflag,backindex,len(images)-1)
             pygame.time.wait(100)
             changepos = False
         moveflag = True
         if running:
             animate_between_pages(moveflag,running)
-        boat = sprite('images/Quincy.PNG',250, 420,200,430,images[index],width=450,height=550,resize=True)
+        boat = sprite('images/Quincy.PNG',250, 420,200,430,images[backindex],width=450,height=550,resize=True)
         moveflag = False
-        view.draw(images[index])
+        cb = ConvoBubble(text[cbindex], -400, -200,width=300,height=300,resize=True)
+        view.draw(images[backindex])
         testpic.update(True)
-        while index == 1 and running:
+        while backindex == 1 and running:
             mouse = pygame.mouse.get_pos()
             mouseflag = pygame.mouse.get_pressed()
             clock.tick(FPS)
@@ -75,7 +81,9 @@ if __name__ == "__main__":
             boat.update(changepos)
             button.check_mouse(mouse)
             button.draw()
-            index = button.mousedown(mouseflag,index,len(images)-1)
+            cbindex,cbflag = cb.next_text(cbindex)
+            cb.update(cbflag)
+            backindex = button.mousedown(mouseflag,backindex,len(images)-1)
             pygame.time.wait(100)
             changepos = False
         # view.draw(images[index])

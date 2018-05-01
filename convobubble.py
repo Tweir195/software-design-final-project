@@ -7,17 +7,19 @@ import time
 class ConvoBubble:
     """This class takes a location, and forms the converstation bubble
     """
-    def __init__(self,image, right_l, left_l):
-        self.image = pygame.image.load(image)
-        self.rightl = right_l
-        self.leftl = left_l
+    def __init__(self,image, left, top,width=None,height=None,resize=False):
+        image = pygame.image.load(image)
+        if resize is True:
+            self.image = pygame.transform.scale(image, (width, height))
+        else:
+            self.image = image
+        self.left = left
+        self.top = top
 
     def draw(self):
         """ Takes a list of convobubble and cycles through them when the space bar is pressed.
         """
-
-
-        view.screen.blit(self.image,(self.rightl,self.leftl))
+        view.screen.blit(self.image,(self.left,self.top))
 
         pygame.display.update()
         # font = pygame.font.SysFont('Sans',35)
@@ -28,6 +30,9 @@ class ConvoBubble:
         # text_rect.width = 2
         # view.screen.blit(text,text_rect)
         #pygame.display.update()
+    def update(self,flag):
+        if flag == True:
+            self.draw()
     def text(self,image):
         """Adds text to the bubble
         """
@@ -38,6 +43,17 @@ class ConvoBubble:
         info = pygame.image.load(image)
         view.screen.blit(info,(0,0))
         pygame.display.update()
+
+    def next_text(self,i):
+        flag = False
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    i = i + 1
+                    flag = True
+        return i,flag
 
     #def name_draw(self,string):
         #self.card = pygame.draw.rect(self.surf,self.color,self.rect,self.rect.width)
@@ -63,10 +79,12 @@ if __name__ == "__main__":
     while running:
 
 
-        cb = ConvoBubble(text_bubble[i],600,0)
+        cb = ConvoBubble(text_bubble[i],700,-100,600,600,True)
 
         cb.draw()
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     i = i + 1

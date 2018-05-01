@@ -7,20 +7,18 @@ from button import *
 
 import pygame
 
-def animate_between_pages(moveflag):
+def animate_between_pages(moveflag,running):
     """Makes the boat float from one page to the next"""
     rect = pygame.Rect((0,0),(1280,700))
     view.draw(images[index-1])
     for i in range(50):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                break
-        # view.screen.fill((69,0,230))
-        # pygame.draw.rect(view.screen,(133,202,255),rect)
-        boat.animate(15,4,moveflag,True,bob=True)
-        boat.draw()
-        pygame.time.wait(100)
+        while running == True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+            boat.animate(15,4,moveflag,True,bob=True)
+            boat.draw()
+            pygame.time.wait(100)
 
 
 if __name__ == "__main__":
@@ -61,7 +59,7 @@ if __name__ == "__main__":
             changepos = False
         moveflag = True
         if running:
-            animate_between_pages(moveflag)
+            animate_between_pages(moveflag,running)
         boat = sprite('images/Quincy.PNG',250, 420,200,430,images[index],width=450,height=550,resize=True)
         moveflag = False
         view.draw(images[index])
@@ -82,7 +80,7 @@ if __name__ == "__main__":
             changepos = False
         # view.draw(images[index])
         # boat.draw()
-        # while index == 1:
+        # while index == 2 and running:
         #     mouse = pygame.mouse.get_pos()
         #     mouseflag = pygame.mouse.get_pressed()
         #     clock.tick(FPS)

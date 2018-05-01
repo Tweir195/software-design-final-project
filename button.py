@@ -18,8 +18,8 @@ class GoToButton(object):
         self.width = width
         self.height = height
         self.surf = pygame.Surface((self.width,self.height))
-        self.color = 255,0,0
-        self.color2 = 0,0,0
+        self.color = 80,169,255
+        self.color2 = 5,56,107
         self.rect = pygame.Rect(self.left,self.top,self.width,self.height)
         self.rect.width = 0
         self.onbutton = False

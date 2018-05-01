@@ -29,17 +29,15 @@ class sprite:
         self.surf_long = pygame.Surface([1280-self.x,sheight], pygame.SRCALPHA)
     def draw(self):
         """ inserts real image onto screen"""
-        # if self.longflag == True:
-        self.surf_long.blit(self.backing_long,(0,0))
-        self.surf_long.blit(self.image,(-120+self.dx,-80+self.dy))
-        print(self.surf_long.get_size())
-        view.screen.blit(self.surf_long,(self.x,self.y))
-        self.longflag = False
-        # else:
-        #     self.surf.blit(self.backing,(0,0))
-        #     self.surf.blit(self.image,(-120+self.dx,-80+self.dy))
-        #     print(self.surf.get_size())
-        #     view.screen.blit(self.surf,(self.x,self.y))
+        if self.longflag == True:
+            self.surf_long.blit(self.backing_long,(0,0))
+            self.surf_long.blit(self.image,(-120+self.dx,-80+self.dy))
+            view.screen.blit(self.surf_long,(self.x,self.y))
+            self.longflag = False
+        else:
+            self.surf.blit(self.backing,(0,0))
+            self.surf.blit(self.image,(-120+self.dx,-80+self.dy))
+            view.screen.blit(self.surf,(self.x,self.y))
         pygame.display.update()
     def update(self,flag):
         if flag == True:

@@ -24,6 +24,9 @@ if __name__ == "__main__":
     pygame.init()
     view = background()
     cb = ConvoBubble(400, 200,width=300,height=300,resize=True)
+    realimage = ['images/Australia/Australia_1.jpg','images/Australia/Australia_2.jpg','images/Australia/Australia_3.jpg','images/Australia/Australia_4.jpg',
+    'images/Australia/Australia_5.jpg','images/Australia/Australia_6.jpg','images/Australia/Australia_7.jpg','images/Australia/Australia_8.jpg'
+    ,'images/Australia/Australia_9.jpg','images/Australia/Australia_10.jpg','images/Australia/Australia_11.jpg','images/Australia/Australia_12.jpg']
     text = ['images/Australia/Australia_1.png','images/Australia/Australia_2.png','images/Australia/Australia_3.png','images/Australia/Australia_4.png',
     'images/Australia/Australia_5.png','images/Australia/Australia_6.png','images/Australia/Australia_7.png','images/Australia/Australia_8.png'
     ,'images/Australia/Australia_9.png','images/Australia/Australia_10.png','images/Australia/Australia_11.png','images/Australia/Australia_12.png']
@@ -68,6 +71,7 @@ if __name__ == "__main__":
         boat = sprite('images/Quincy.PNG',250, 420,200,430,images[backindex],width=450,height=550,resize=True)
         moveflag = False
         cb = ConvoBubble(400, 200,width=300,height=300,resize=True)
+        rp = real_picture(100,100,width = 400, height = 300, resize=True)
         view.draw(images[backindex])
         #testpic.update(True)
         cbindex = 0
@@ -80,6 +84,7 @@ if __name__ == "__main__":
                     running = False
 
             cb.draw(text[cbindex])
+            rp.draw(realimage[cbindex])
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:

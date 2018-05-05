@@ -43,6 +43,7 @@ class real_picture:
                 index = 0
             self.oldindex = index
             # print('SPACE',index)
+            self.spaceflag = False 
         return self.oldindex
 if __name__ == "__main__":
     pygame.init()

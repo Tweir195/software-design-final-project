@@ -30,7 +30,7 @@ if __name__ == "__main__":
     images = ['images/Australia/AustraliaBG.PNG']
     button = GoToButton(1100,780)
     images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG']
-    testpic = real_picture('images/cat-grumpy-icon.png',20,70,width=600,height=300,resize=True)
+    #testpic = real_picture('images/cat-grumpy-icon.png',20,70,width=600,height=300,resize=True)
 
     running = True
     clock = pygame.time.Clock()
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         moveflag = False
         cb = ConvoBubble(400, 200,width=300,height=300,resize=True)
         view.draw(images[backindex])
-        testpic.update(True)
+        #testpic.update(True)
         cbindex = 0
         while backindex == 1 and running:
             mouse = pygame.mouse.get_pos()

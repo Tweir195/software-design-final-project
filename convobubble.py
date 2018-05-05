@@ -36,11 +36,12 @@ class ConvoBubble:
         # view.screen.blit(text,text_rect)
         #pygame.display.update()
 
-    def update(self,flag,image):
-        if flag == True:
-            self.draw()
-            flag = False
-        return flag
+    def update(self,image):
+
+        if self.spaceflag == True:
+            self.draw(image)
+            self.spaceflag = False
+        return self.spaceflag
 
     def text(self,image):
         """Adds text to the bubble
@@ -96,9 +97,9 @@ if __name__ == "__main__":
     while running:
 
 
-        cb = ConvoBubble(text_bubble[i],700,-100,600,600,True)
+        cb = ConvoBubble(700,-100,600,600,True)
 
-        cb.draw()
+        cb.draw(text_bubble[i])
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False

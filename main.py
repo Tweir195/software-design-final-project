@@ -10,7 +10,7 @@ import pygame
 def animate_between_pages(moveflag,running):
     """Makes the boat float from one page to the next"""
     rect = pygame.Rect((0,0),(1280,700))
-    view.draw(images[backindex-1])
+    view.draw(background_images[backindex-1])
     for i in range(50):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -24,28 +24,38 @@ if __name__ == "__main__":
     pygame.init()
     view = background()
     cb = ConvoBubble(400, 200,width=300,height=300,resize=True)
-    realimage = ['images/Australia/Australia_1.jpg','images/Australia/Australia_2.jpg','images/Australia/Australia_3.jpg','images/Australia/Australia_4.jpg',
+    Aus_realimage = ['images/Australia/Australia_1.jpg','images/Australia/Australia_2.jpg','images/Australia/Australia_3.jpg','images/Australia/Australia_4.jpg',
     'images/Australia/Australia_5.jpg','images/Australia/Australia_6.jpg','images/Australia/Australia_7.jpg','images/Australia/Australia_8.jpg'
     ,'images/Australia/Australia_9.jpg','images/Australia/Australia_10.jpg','images/Australia/Australia_11.jpg','images/Australia/Australia_12.jpg']
-    text = ['images/Australia/Australia_1.png','images/Australia/Australia_2.png','images/Australia/Australia_3.png','images/Australia/Australia_4.png',
+    Aus_text = ['images/Australia/Australia_1.png','images/Australia/Australia_2.png','images/Australia/Australia_3.png','images/Australia/Australia_4.png',
     'images/Australia/Australia_5.png','images/Australia/Australia_6.png','images/Australia/Australia_7.png','images/Australia/Australia_8.png'
-    ,'images/Australia/Australia_9.png','images/Australia/Australia_10.png','images/Australia/Australia_11.png','images/Australia/Australia_12.png']
-    images = ['images/Australia/AustraliaBG.PNG']
-    button = GoToButton(1100,780)
-    images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG']
-    #testpic = real_picture('images/cat-grumpy-icon.png',20,70,width=600,height=300,resize=True)
+    ,'images/Australia/Australia_9.png','images/Australia/Australia_10.png','images/Australia/Australia_11.png','images/Australia/Australia_12.png'] #convo bubles for australia
+
+    NAG_realimage = ['images/North_Atlantic_Gyre/NAG_1_opt.jpg','images/North_Atlantic_Gyre/NAG_2_opt.jpg','images/North_Atlantic_Gyre/NAG_3_opt.jpg',
+    'images/North_Atlantic_Gyre/NAG_4_opt.jpg','images/North_Atlantic_Gyre/NAG_5_opt.jpg','images/North_Atlantic_Gyre/NAG_6_opt.jpg',
+    'images/North_Atlantic_Gyre/NAG_7_opt.jpg']
+    NAG_text = ['images/North_Atlantic_Gyre/NAG_1.png','images/North_Atlantic_Gyre/NAG_2.png','images/North_Atlantic_Gyre/NAG_3.png','images/North_Atlantic_Gyre/NAG_4.png',
+    'images/North_Atlantic_Gyre/NAG_5.png','images/North_Atlantic_Gyre/NAG_6.png','images/North_Atlantic_Gyre/NAG_7.png']
+
+    #Flint_realimage = []
+    #Flint_text = []
+
+    background_images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG','images/North_Atlantic_Gyre/NAGBG.PNG',
+    'images/Flint/FlintBG.jpg'] # list of background images
+
 
     running = True
     clock = pygame.time.Clock()
     FPS = 15
-
+    button = GoToButton(1100,780)
     cbindex = 0
     cbflag = False
     backindex = 0
-    view.draw(images[backindex])
+    view.draw(background_images[backindex])
     moveflag = False
-    boat = sprite('images/Quincy.PNG',250, 420,200,430,images[backindex],width=450,height=550,resize=True)
+    boat = sprite('images/Quincy.PNG',250, 420,200,430,background_images[backindex],width=450,height=550,resize=True)
     boat.draw()
+
 
     while running: # main program loop
         for event in pygame.event.get():
@@ -62,17 +72,18 @@ if __name__ == "__main__":
             boat.update(changepos)
             button.check_mouse(mouse)
             button.draw()
-            backindex = button.mousedown(mouseflag,backindex,len(images)-1)
+            backindex = button.mousedown(mouseflag,backindex,len(background_images)-1)
             pygame.time.wait(100)
             changepos = False
         moveflag = True
         if running:
             animate_between_pages(moveflag,running)
-        boat = sprite('images/Quincy.PNG',250, 420,200,430,images[backindex],width=450,height=550,resize=True)
+        boat = sprite('images/Quincy.PNG',250, 420,200,430,background_images
+        [backindex],width=450,height=550,resize=True)
         moveflag = False
         cb = ConvoBubble(800,0,width=500,height=500,resize=True)
         rp = real_picture(100,50,width = 450, height = 350, resize=True)
-        view.draw(images[backindex])
+        view.draw(background_images[backindex])
         #testpic.update(True)
         cbindex = 0
         while backindex == 1 and running:
@@ -82,10 +93,10 @@ if __name__ == "__main__":
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-            if cbindex == len(text):
+            if cbindex == len(Aus_text):
                 cbindex = 0
-            cb.draw(text[cbindex])
-            rp.draw(realimage[cbindex])
+            cb.draw(Aus_text[cbindex])
+            rp.draw(Aus_realimage[cbindex])
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
@@ -100,7 +111,7 @@ if __name__ == "__main__":
                 #cb = ConvoBubble(-400, -200,width=300,height=300,resize=True)
                 #cb.spaceflag = True
                 #cb.update(text[cbindex])
-            backindex = button.mousedown(mouseflag,backindex,len(images)-1)
+            backindex = button.mousedown(mouseflag,backindex,len(background_images)-1)
             pygame.time.wait(100)
             changepos = False
         # view.draw(images[index])

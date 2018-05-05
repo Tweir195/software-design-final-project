@@ -70,7 +70,7 @@ if __name__ == "__main__":
             animate_between_pages(moveflag,running)
         boat = sprite('images/Quincy.PNG',250, 420,200,430,images[backindex],width=450,height=550,resize=True)
         moveflag = False
-        cb = ConvoBubble(400, 200,width=300,height=300,resize=True)
+        cb = ConvoBubble(800,100,width=300,height=300,resize=True)
         rp = real_picture(100,100,width = 400, height = 300, resize=True)
         view.draw(images[backindex])
         #testpic.update(True)
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    cbindex = cbindex + 1
+                    cbindex = cb.spacedown(cbindex,len(text))
 
             changepos = boat.animate(0,3,moveflag,False,bob=True)
             boat.update(changepos)

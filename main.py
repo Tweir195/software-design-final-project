@@ -114,6 +114,64 @@ if __name__ == "__main__":
             backindex = button.mousedown(mouseflag,backindex,len(background_images)-1)
             pygame.time.wait(100)
             changepos = False
+
+        cbindex = 0
+        view.draw(background_images[backindex])
+        boat = sprite('images/Quincy.PNG',250, 420,200,430,background_images[backindex],width=450,height=550,resize=True)
+        while backindex == 2 and running:
+            mouse = pygame.mouse.get_pos()
+            mouseflag = pygame.mouse.get_pressed()
+            clock.tick(FPS)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+            if cbindex == len(NAG_text):
+                cbindex = 0
+            cb.draw(NAG_text[cbindex])
+            rp.draw(NAG_realimage[cbindex])
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                        cbindex = cbindex + 1
+
+            changepos = boat.animate(0,3,moveflag,False,bob=True)
+            boat.update(changepos)
+            button.check_mouse(mouse)
+            button.draw()
+
+            #cbindex= cb.spacedown(cbindex,len(text))
+            #if cb.redraw == True:
+                #cb = ConvoBubble(-400, -200,width=300,height=300,resize=True)
+                #cb.spaceflag = True
+                #cb.update(text[cbindex])
+            backindex = button.mousedown(mouseflag,backindex,len(background_images)-1)
+            pygame.time.wait(100)
+            changepos = False
+
+        cbindex = 0
+        cb = ConvoBubble(850,300,width=500,height=500,resize=True)
+        view.draw(background_images[backindex])
+        boat = sprite('images/Quincy.PNG',250, 420,200,430,background_images[backindex],width=450,height=550,resize=True)
+        while backindex == 3 and running:
+            mouse = pygame.mouse.get_pos()
+            mouseflag = pygame.mouse.get_pressed()
+            clock.tick(FPS)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+            if cbindex == len(NAG_text):
+                cbindex = 0
+            cb.draw(NAG_text[cbindex])
+            rp.draw(NAG_realimage[cbindex])
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                        cbindex = cbindex + 1
+
+            changepos = boat.animate(0,3,moveflag,False,bob=True)
+            boat.update(changepos)
+            button.check_mouse(mouse)
+            button.draw()
         # view.draw(images[index])
         # boat.draw()
         # while index == 2 and running:

@@ -36,9 +36,6 @@ if __name__ == "__main__":
     clock = pygame.time.Clock()
     FPS = 15
 
-    musicind = 0
-    music = ['music/home.mp3']
-
     cbindex = 0
     cbflag = False
     backindex = 0
@@ -46,14 +43,11 @@ if __name__ == "__main__":
     moveflag = False
     boat = sprite('images/Quincy.PNG',250, 420,200,430,images[backindex],width=450,height=550,resize=True)
     boat.draw()
-    # pygame.mixer.music.load('music/home.mp3')
 
     while running: # main program loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-        pygame.mixer.music.load(music[musicind])
-        pygame.mixer.music.play(-1)
         while backindex == 0 and running:
             mouse = pygame.mouse.get_pos()
             mouseflag = pygame.mouse.get_pressed()
@@ -71,12 +65,12 @@ if __name__ == "__main__":
         moveflag = True
         if running:
             animate_between_pages(moveflag,running)
-        pygame.mixer.music.fadeout(1000)
         boat = sprite('images/Quincy.PNG',250, 420,200,430,images[backindex],width=450,height=550,resize=True)
         moveflag = False
         cb = ConvoBubble(400, 200,width=300,height=300,resize=True)
         view.draw(images[backindex])
         testpic.update(True)
+        cbindex = 0
         while backindex == 1 and running:
             mouse = pygame.mouse.get_pos()
             mouseflag = pygame.mouse.get_pressed()
@@ -84,15 +78,22 @@ if __name__ == "__main__":
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+
+            cb.draw(text[cbindex])
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    cbindex = cbindex + 1
+
             changepos = boat.animate(0,3,moveflag,False,bob=True)
             boat.update(changepos)
             button.check_mouse(mouse)
             button.draw()
-            cbindex = cb.spacedown(cbindex,len(text))
-            if cb.redraw == True:
-                cb = ConvoBubble(-400, -200,width=300,height=300,resize=True)
-                cbflag = True
-            cbflag = cb.update(cbflag,text[cbindex])
+            #cbindex= cb.spacedown(cbindex,len(text))
+            #if cb.redraw == True:
+                #cb = ConvoBubble(-400, -200,width=300,height=300,resize=True)
+                #cb.spaceflag = True
+                #cb.update(text[cbindex])
             backindex = button.mousedown(mouseflag,backindex,len(images)-1)
             pygame.time.wait(100)
             changepos = False
@@ -111,5 +112,7 @@ if __name__ == "__main__":
         #     index = button.mousedown(mouseflag,index,len(images)-1)
         #     pygame.time.wait(100)
         #     print('loop2')
+
+
 
     pygame.quit()

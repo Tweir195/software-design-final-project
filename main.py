@@ -37,8 +37,10 @@ if __name__ == "__main__":
     NAG_text = ['images/North_Atlantic_Gyre/NAG_1.png','images/North_Atlantic_Gyre/NAG_2.png','images/North_Atlantic_Gyre/NAG_3.png','images/North_Atlantic_Gyre/NAG_4.png',
     'images/North_Atlantic_Gyre/NAG_5.png','images/North_Atlantic_Gyre/NAG_6.png','images/North_Atlantic_Gyre/NAG_7.png']
 
-    #Flint_realimage = []
-    #Flint_text = []
+    Flint_realimage = ['images/Flint/flint_1.jpeg','images/Flint/flint_2.jpg','images/Flint/flint_3.jpg','images/Flint/flint_4.jpg','images/Flint/flint_5.jpg',
+    'images/Flint/flint_6.jpg','images/Flint/flint_7.jpg','images/Flint/flint_8.jpg','images/Flint/flint_9.jpg']
+    Flint_text = ['images/Flint/flint_1.png','images/Flint/flint_2.png','images/Flint/flint_3.png','images/Flint/flint_4.png','images/Flint/flint_5.png',
+    'images/Flint/flint_6.png','images/Flint/flint_7.png','images/Flint/flint_8.png','images/Flint/flint_9.png',]
 
     background_images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG','images/North_Atlantic_Gyre/NAGBG.PNG',
     'images/Flint/FlintBG.jpg'] # list of background images
@@ -159,10 +161,10 @@ if __name__ == "__main__":
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-            if cbindex == len(NAG_text):
+            if cbindex == len(Flint_text):
                 cbindex = 0
-            cb.draw(NAG_text[cbindex])
-            rp.draw(NAG_realimage[cbindex])
+            cb.draw(Flint_text[cbindex])
+            rp.draw(Flint_realimage[cbindex])
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:

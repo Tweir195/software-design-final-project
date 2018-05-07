@@ -4,5 +4,7 @@ This is our final project for Olin College's Software Design class Spring 2018. 
 * You must install pygame using:  sudo apt-get install pygame
 * Run main.py
 * You should see a cat going across a blue screen with a red block in the lower right corner.
+### Game Demo
+https://sites.google.com/view/waterworldsoftdes/video
 ### Authors
 Tommy Weir, Andrew Schnurr, Emily Nasiff, and Abby Fry

@@ -56,7 +56,7 @@ if __name__ == "__main__":
     'images/Bangladesh/Bangladesh_12.png',]
 
     background_images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG','images/North_Atlantic_Gyre/NAGBG.PNG',
-    'images/Flint/FlintBG.jpg'] # list of background images
+    'images/Flint/FlintBG.jpg','images/Arctic/ArcticBG.PNG','images/Bangladesh/BangladeshBG.PNG'] # list of background images
 
 
     running = True
@@ -178,6 +178,56 @@ if __name__ == "__main__":
                 cbindex = 0
             cb.draw(Flint_text[cbindex])
             rp.draw(Flint_realimage[cbindex])
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                        cbindex = cbindex + 1
+
+            changepos = boat.animate(0,3,moveflag,False,bob=True)
+            boat.update(changepos)
+            button.check_mouse(mouse)
+            button.draw()
+
+        cbindex = 0
+        cb = ConvoBubble(850,300,width=500,height=500,resize=True)
+        view.draw(background_images[backindex])
+        boat = sprite('images/Quincy.PNG',250, 420,200,430,background_images[backindex],width=450,height=550,resize=True)
+        while backindex == 4 and running:
+            mouse = pygame.mouse.get_pos()
+            mouseflag = pygame.mouse.get_pressed()
+            clock.tick(FPS)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+            if cbindex == len(Flint_text):
+                cbindex = 0
+            cb.draw(Arc_text[cbindex])
+            rp.draw(Arc_realimage[cbindex])
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                        cbindex = cbindex + 1
+
+            changepos = boat.animate(0,3,moveflag,False,bob=True)
+            boat.update(changepos)
+            button.check_mouse(mouse)
+            button.draw()
+
+        cbindex = 0
+        cb = ConvoBubble(850,300,width=500,height=500,resize=True)
+        view.draw(background_images[backindex])
+        boat = sprite('images/Quincy.PNG',250, 420,200,430,background_images[backindex],width=450,height=550,resize=True)
+        while backindex == 5 and running:
+            mouse = pygame.mouse.get_pos()
+            mouseflag = pygame.mouse.get_pressed()
+            clock.tick(FPS)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+            if cbindex == len(Flint_text):
+                cbindex = 0
+            cb.draw(Bang_text[cbindex])
+            rp.draw(Bang_realimage[cbindex])
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:

@@ -1,0 +1,91 @@
+<ges version='0.3'>
+  <project properties='properties;' metadatas='metadatas, name=(string)&quot;New\ Project&quot;, author=(string)&quot;Tommy\ Weir&quot;, render-scale=(double)100, format-version=(string)0.3;'>
+    <encoding-profiles>
+      <encoding-profile name='pitivi-profile' description='Pitivi encoding profile' type='container' preset-name='mp4mux' format='video/quicktime, variant=(string)iso' >
+        <stream-profile parent='pitivi-profile' id='0' type='video' presence='1' format='video/x-h264, framerate=(fraction)[ 0/1, 2147483647/1 ], width=(int)[ 1, 2147483647 ], height=(int)[ 1, 2147483647 ], stream-format=(string){ avc, byte-stream }, alignment=(string)au, profile=(string){ high-4:4:4, high-4:2:2, high-10, high, main, baseline, constrained-baseline, high-4:4:4-intra, high-4:2:2-intra, high-10-intra }' preset='encoder_settings_04cccb85452b4d58b240032b8c740e71' preset-properties='properties, threads=(uint)0, sliced-threads=(boolean)false, sync-lookahead=(int)-1, pass=(int)0, quantizer=(uint)21, multipass-cache-file=(string)x264.log, byte-stream=(boolean)false, bitrate=(uint)2048, intra-refresh=(boolean)false, vbv-buf-capacity=(uint)600, me=(int)1, subme=(uint)1, analyse=(int)0, dct8x8=(boolean)false, ref=(uint)1, bframes=(uint)0, b-adapt=(boolean)true, b-pyramid=(boolean)false, weightb=(boolean)false, sps-id=(uint)0, aud=(boolean)true, trellis=(boolean)true, key-int-max=(uint)0, cabac=(boolean)true, qp-min=(uint)10, qp-max=(uint)51, qp-step=(uint)4, ip-factor=(float)1.3999999761581421, pb-factor=(float)1.2999999523162842, mb-tree=(boolean)true, rc-lookahead=(int)40, noise-reduction=(uint)0, interlaced=(boolean)false, option-string=(string)&quot;&quot;, speed-preset=(int)6, psy-tune=(int)0, tune=(int)0, frame-packing=(int)-1;' preset-name='x264enc' restriction='video/x-raw, framerate=(fraction)120/1, width=(int)1278, height=(int)960, format=(string)Y444, pixel-aspect-ratio=(fraction)1/1' pass='0' variableframerate='0' />
+        <stream-profile parent='pitivi-profile' id='1' type='audio' presence='1' format='audio/mpeg, mpegversion=(int)4, rate=(int){ 8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000 }, channels=(int){ 1, 2, 3, 4, 5, 6, 8 }, stream-format=(string){ adts, adif, raw }, base-profile=(string)lc, framed=(boolean)true' preset='encoder_settings_19ae41803c2a4812a6a26b6759948a86' preset-properties='properties, perfect-timestamp=(boolean)false, hard-resync=(boolean)false, tolerance=(gint64)40000000, bitrate=(int)0;' preset-name='fdkaacenc' restriction='audio/x-raw, rate=(int)48000, channels=(int)2' />
+      </encoding-profile>
+    </encoding-profiles>
+    <ressources>
+      <asset id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' extractable-type-name='GESUriClip' properties='properties, supported-formats=(int)2, duration=(guint64)63997291666;' metadatas='metadatas, container-format=(string)Matroska, audio-codec=(string)Opus, language-code=(string)en, file-size=(guint64)633307;' />
+      <asset id='file:///home/tommy/finalproject/video_files/180507-T021.WAV' extractable-type-name='GESUriClip' properties='properties, supported-formats=(int)2, duration=(guint64)63997291667;' metadatas='metadatas, container-format=(string)WAV, bitrate=(uint)2304000, audio-codec=(string)&quot;Uncompressed\ 24-bit\ PCM\ audio&quot;, file-size=(guint64)18463988;'  proxy-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' />
+      <asset id='file:///home/tommy/finalproject/ScreenRecodring1.mp4' extractable-type-name='GESUriClip' properties='properties, supported-formats=(int)4, duration=(guint64)81500000000;' metadatas='metadatas, video-codec=(string)&quot;H.264\ /\ AVC&quot;, bitrate=(uint)547714, encoder=(string)Lavf56.40.101, container-format=(string)&quot;ISO\ MP4/M4A&quot;, file-size=(guint64)5584017;' />
+      <asset id='crossfade' extractable-type-name='GESTransitionClip' properties='properties;' metadatas='metadatas, description=(string)GES_VIDEO_STANDARD_TRANSITION_TYPE_CROSSFADE;' />
+    </ressources>
+    <timeline properties='properties, auto-transition=(boolean)true, snapping-distance=(guint64)250902253;' metadatas='metadatas, duration=(guint64)78359144800;'>
+      <track caps='video/x-raw(ANY)' track-type='4' track-id='0' properties='properties, async-handling=(boolean)false, message-forward=(boolean)true, caps=(string)&quot;video/x-raw\(ANY\)&quot;, restriction-caps=(string)&quot;video/x-raw\,\ width\=\(int\)1278\,\ height\=\(int\)960\,\ framerate\=\(fraction\)120/1&quot;, mixing=(boolean)true;' metadatas='metadatas;'/>
+      <track caps='audio/x-raw(ANY)' track-type='2' track-id='1' properties='properties, async-handling=(boolean)false, message-forward=(boolean)true, caps=(string)&quot;audio/x-raw\(ANY\)&quot;, restriction-caps=(string)&quot;audio/x-raw\,\ format\=\(string\)S32LE\,\ channels\=\(int\)2\,\ rate\=\(int\)44100\,\ layout\=\(string\)interleaved&quot;, mixing=(boolean)true;' metadatas='metadatas;'/>
+      <layer priority='0' properties='properties, auto-transition=(boolean)true;' metadatas='metadatas, volume=(float)1;'>
+        <clip id='0' asset-id='file:///home/tommy/finalproject/ScreenRecodring1.mp4' type-name='GESUriClip' layer-priority='0' track-types='4' start='0' duration='59289911900' inpoint='0' rate='0' properties='properties, name=(string)uriclip14, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='0' children-properties='properties, GstFramePositioner::alpha=(double)1, GstDeinterlace::fields=(int)0, GstFramePositioner::height=(int)960, GstDeinterlace::mode=(int)0, GstFramePositioner::posx=(int)0, GstFramePositioner::posy=(int)0, GstDeinterlace::tff=(int)0, GstFramePositioner::width=(int)1278;'>
+            <binding type='direct' source_type='interpolation' property='alpha' mode='1' track_id='0' values =' 0:1  59289911900:1 '/>
+          </source>
+        </clip>
+        <clip id='1' asset-id='file:///home/tommy/finalproject/ScreenRecodring1.mp4' type-name='GESUriClip' layer-priority='0' track-types='4' start='59289911900' duration='5842808163' inpoint='59819240921' rate='0' properties='properties, name=(string)uriclip16, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='0' children-properties='properties, GstFramePositioner::alpha=(double)1, GstDeinterlace::fields=(int)0, GstFramePositioner::height=(int)960, GstDeinterlace::mode=(int)0, GstFramePositioner::posx=(int)0, GstFramePositioner::posy=(int)0, GstDeinterlace::tff=(int)0, GstFramePositioner::width=(int)1278;'>
+            <binding type='direct' source_type='interpolation' property='alpha' mode='1' track_id='0' values =' 59819240921:1  65662049084:1 '/>
+          </source>
+        </clip>
+        <clip id='2' asset-id='file:///home/tommy/finalproject/ScreenRecodring1.mp4' type-name='GESUriClip' layer-priority='0' track-types='4' start='65132720063' duration='3706427943' inpoint='66506660528' rate='0' properties='properties, name=(string)uriclip20, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='0' children-properties='properties, GstFramePositioner::alpha=(double)1, GstDeinterlace::fields=(int)0, GstFramePositioner::height=(int)960, GstDeinterlace::mode=(int)0, GstFramePositioner::posx=(int)0, GstFramePositioner::posy=(int)0, GstDeinterlace::tff=(int)0, GstFramePositioner::width=(int)1278;'>
+            <binding type='direct' source_type='interpolation' property='alpha' mode='1' track_id='0' values =' 66506660528:1  70213088471:1 '/>
+          </source>
+        </clip>
+        <clip id='3' asset-id='file:///home/tommy/finalproject/ScreenRecodring1.mp4' type-name='GESUriClip' layer-priority='0' track-types='4' start='68839148006' duration='9519996794' inpoint='70652625956' rate='0' properties='properties, name=(string)uriclip22, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='0' children-properties='properties, GstFramePositioner::alpha=(double)1, GstDeinterlace::fields=(int)0, GstFramePositioner::height=(int)960, GstDeinterlace::mode=(int)0, GstFramePositioner::posx=(int)0, GstFramePositioner::posy=(int)0, GstDeinterlace::tff=(int)0, GstFramePositioner::width=(int)1278;'>
+            <binding type='direct' source_type='interpolation' property='alpha' mode='1' track_id='0' values =' 70652625956:1  80172622750:1 '/>
+          </source>
+        </clip>
+      </layer>
+      <layer priority='1' properties='properties, auto-transition=(boolean)true;' metadatas='metadatas, volume=(float)1;'>
+        <clip id='4' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='116335316' duration='9521507045' inpoint='2972746323' rate='0' properties='properties, name=(string)uriclip4, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 2972746323:0.10000000149011612  12494253368:0.10000000149011612 '/>
+          </source>
+        </clip>
+        <clip id='5' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='11028274994' duration='6483415000' inpoint='12494253368' rate='0' properties='properties, name=(string)uriclip5, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 12494253368:0.10000000149011612  18977668368:0.10000000149011612 '/>
+          </source>
+        </clip>
+        <clip id='6' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='17511689994' duration='8024785000' inpoint='18977668368' rate='0' properties='properties, name=(string)uriclip6, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 18977668368:0.10000000149011612  27002453368:0.10000000149011612 '/>
+          </source>
+        </clip>
+        <clip id='7' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='31798532006' duration='8749942000' inpoint='27002453368' rate='0' properties='properties, name=(string)uriclip7, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 27002453368:0.10000000149011612  35752395368:0.10000000149011612 '/>
+          </source>
+        </clip>
+        <clip id='8' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='42293293284' duration='4695387000' inpoint='35752395368' rate='0' properties='properties, name=(string)uriclip8, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 35752395368:0.10000000149011612  40447782368:0.10000000149011612 '/>
+          </source>
+        </clip>
+        <clip id='9' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='49381481803' duration='6626181000' inpoint='40447782368' rate='0' properties='properties, name=(string)uriclip9, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 40447782368:0.10000000149011612  47073963368:0.10000000149011612 '/>
+          </source>
+        </clip>
+        <clip id='10' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='57822677952' duration='7249870000' inpoint='47073963368' rate='0' properties='properties, name=(string)uriclip10, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 47073963368:0.10000000149011612  54323833368:0.10000000149011612 '/>
+          </source>
+        </clip>
+        <clip id='11' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='65876425179' duration='4809899000' inpoint='54323833368' rate='0' properties='properties, name=(string)uriclip11, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 54323833368:0.10000000149011612  59133732368:0.10000000149011612 '/>
+          </source>
+        </clip>
+        <clip id='12' asset-id='file:///home/tommy/finalproject/video_files/180507-T021.WAV.18463988.proxy.mkv' type-name='GESUriClip' layer-priority='1' track-types='2' start='71996006193' duration='3493678000' inpoint='59133732368' rate='0' properties='properties, name=(string)uriclip12, mute=(boolean)false, is-image=(boolean)false;' >
+          <source track-id='1' children-properties='properties, GstVolume::mute=(boolean)false, GstVolume::volume=(double)1.0146952867507935;'>
+            <binding type='direct' source_type='interpolation' property='volume' mode='1' track_id='1' values =' 59133732368:0.10146952305428913  62627410368:0.10146952305428913 '/>
+          </source>
+        </clip>
+      </layer>
+      <groups>
+      </groups>
+    </timeline>
+</project>
+</ges>

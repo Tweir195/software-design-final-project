@@ -24,6 +24,8 @@ if __name__ == "__main__":
     pygame.init()
     view = background()
     cb = ConvoBubble(400, 200,width=300,height=300,resize=True)
+    """ Lists are full of different elements that must be blited to the screen at different locations, all elements are included so we can cycle through them """
+
     Aus_realimage = ['images/Australia/Australia_1.jpg','images/Australia/Australia_2.jpg','images/Australia/Australia_3.jpg','images/Australia/Australia_4.jpg',
     'images/Australia/Australia_5.jpg','images/Australia/Australia_6.jpg','images/Australia/Australia_7.jpg','images/Australia/Australia_8.jpg'
     ,'images/Australia/Australia_9.jpg','images/Australia/Australia_10.jpg','images/Australia/Australia_11.jpg','images/Australia/Australia_12.jpg']
@@ -77,6 +79,7 @@ if __name__ == "__main__":
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+    """ Adds music to game """
         pygame.mixer.music.load(music[musicindex])
         pygame.mixer.music.play(-1)
         while backindex == 0 and running:
@@ -95,10 +98,12 @@ if __name__ == "__main__":
             changepos = False
         moveflag = True
         if running:
+    """ Makes sprite bob across screen after you click on the button and before you move to the next location """
             animate_between_pages(moveflag,running)
         pygame.mixer.music.fadeout(400)
         musicindex += 1
         boat = sprite('images/Quincy.PNG',250, 420,200,430,background_images
+""" Blits new Background according to index change (Changes locaion on screen) """
         [backindex],width=450,height=550,resize=True)
         moveflag = False
         cb = ConvoBubble(800,0,width=500,height=500,resize=True)

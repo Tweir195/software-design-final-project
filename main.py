@@ -40,7 +40,20 @@ if __name__ == "__main__":
     Flint_realimage = ['images/Flint/flint_1.jpeg','images/Flint/flint_2.jpg','images/Flint/flint_3.jpg','images/Flint/flint_4.jpg','images/Flint/flint_5.jpg',
     'images/Flint/flint_6.jpg','images/Flint/flint_7.jpg','images/Flint/flint_8.jpg','images/Flint/flint_9.jpg']
     Flint_text = ['images/Flint/flint_1.png','images/Flint/flint_2.png','images/Flint/flint_3.png','images/Flint/flint_4.png','images/Flint/flint_5.png',
-    'images/Flint/flint_6.png','images/Flint/flint_7.png','images/Flint/flint_8.png','images/Flint/flint_9.png',]
+    'images/Flint/flint_6.png','images/Flint/flint_7.png','images/Flint/flint_8.png','images/Flint/flint_9.png']
+
+    Arc_realimage = ['images/Arctic/Arctic_1.jpg','images/Arctic/Arctic_2.jpg','images/Arctic/Arctic_3.jpg','images/Arctic/Arctic_4.jpg','images/Arctic/Arctic_5.jpg',
+    'images/Arctic/Arctic_6.jpg','images/Arctic/Arctic_7.jpg','images/Arctic/Arctic_8.jpg','images/Arctic/Arctic_9.jpg',]
+    Arc_text = ['images/Arctic/Arctic_1.png','images/Arctic/Arctic_2.png','images/Arctic/Arctic_3.png','images/Arctic/Arctic_4.png','images/Arctic/Arctic_5.png','images/Arctic/Arctic_6.png',
+    'images/Arctic/Arctic_7.png','images/Arctic/Arctic_8.png','images/Arctic/Arctic_9.png']
+
+    Bang_realimage = ['images/Bangladesh/Bangladesh_1.jpg','images/Bangladesh/Bangladesh_2.jpg','images/Bangladesh/Bangladesh_3.jpg','images/Bangladesh/Bangladesh_4.jpg','images/Bangladesh/Bangladesh_5.jpg',
+    'images/Bangladesh/Bangladesh_6.jpg','images/Bangladesh/Bangladesh_7.JPG','images/Bangladesh/Bangladesh_8.jpg','images/Bangladesh/Bangladesh_9.jpg',
+    'images/Bangladesh/Bangladesh_10.jpg','images/Bangladesh/Bangladesh_11.jpg','images/Bangladesh/Bangladesh_12.jpg']
+    Bang_text = ['images/Bangladesh/Bangladesh_1.png','images/Bangladesh/Bangladesh_2.png','images/Bangladesh/Bangladesh_3.png','images/Bangladesh/Bangladesh_4.png',
+    'images/Bangladesh/Bangladesh_4.png','images/Bangladesh/Bangladesh_5.png','images/Bangladesh/Bangladesh_6.png','images/Bangladesh/Bangladesh_7.png',
+    'images/Bangladesh/Bangladesh_8.png','images/Bangladesh/Bangladesh_9.png','images/Bangladesh/Bangladesh_10.png','images/Bangladesh/Bangladesh_11.png',
+    'images/Bangladesh/Bangladesh_12.png',]
 
     background_images = ['images/WelcomeBG.PNG', 'images/Australia/AustraliaBG.PNG','images/North_Atlantic_Gyre/NAGBG.PNG',
     'images/Flint/FlintBG.jpg'] # list of background images
